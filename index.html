@@ -30,7 +30,6 @@
     <div class="column-left spacer">.</div>
     <div class="column-middle">
         <div id="nav-content-home">
-
             <h3>Home</h3>
             <p>Are you ready for a thrilling text adventure? Then look no further! Click the "Party" button above to
                 fill
@@ -38,13 +37,24 @@
                 clicking
                 that button.</p>
         </div>
-        <div id="nav-content-party" style="display: none;">
+        <div id="nav-content-party" class="hidden-content">
             <h3>Party</h3>
+            <div class="form-group" data-children-count="1">
+                <label class="form-control-label" for="party-input-player">Your Name</label>
+                <input type="text" value="" class="form-control is-invalid" id="party-input-player">
+                <div id="party-input-feedback-player" class="invalid-feedback">Please enter a name.</div>
+            </div>
+            <button type="button" class="btn btn-success" id="party-save">Save</button>
+            <div id="party-all-valid" class="hidden-content">
+                <p>Looks like your party's all ready to go, <abbr title="player's name"></abbr>! Click on " Story" to
+                    get
+                    started on your adventure!</p>
+            </div>
         </div>
-        <div id="nav-content-inventory" style="display: none;">
+        <div id="nav-content-inventory" class="hidden-content">
             <h3>Inventory</h3>
         </div>
-        <div id="nav-content-story" style="display: none;">
+        <div id="nav-content-story" class="hidden-content">
             <h3>Story</h3>
         </div>
     </div>

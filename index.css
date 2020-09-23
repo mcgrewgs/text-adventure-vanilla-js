@@ -19,3 +19,7 @@ p {
     width: 50%;
     float: left;
 }
+
+.hidden-content {
+    display: none;
+}
