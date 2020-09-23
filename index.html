@@ -1,66 +1,57 @@
 <html>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cyborg/bootstrap.min.css"
-    integrity="sha384-nEnU7Ae+3lD52AK+RGNzgieBWMnEfgTbRHIwEvp1XXPdqdO6uLTd/NwXbzboqjc2" crossorigin="anonymous">
-<link rel="stylesheet" href="./index.css">
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cyborg/bootstrap.min.css"
+        integrity="sha384-nEnU7Ae+3lD52AK+RGNzgieBWMnEfgTbRHIwEvp1XXPdqdO6uLTd/NwXbzboqjc2"
+        crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./index.css" />
 
-<head>
-    <!-- <h1 id="title">Ready for an exciting text adventure?</h1> -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Text Adventure</a>
-        <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active" id="nav-item-home">
-                    <a class="nav-link" href="#" id="nav-button-home">Home</a>
-                </li>
-                <li class="nav-item" id="nav-item-party">
-                    <a class="nav-link" href="#" id="nav-button-party">Party</a>
-                </li>
-                <li class="nav-item" id="nav-item-inventory">
-                    <a class="nav-link" href="#" id="nav-button-inventory">Inventory</a>
-                </li>
-                <li class="nav-item" id="nav-item-story">
-                    <a class="nav-link" href="#" id="nav-button-story">Story</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</head>
-
-<body>
-    <div class="column-left spacer">.</div>
-    <div class="column-middle">
-        <div id="nav-content-home">
-            <h3>Home</h3>
-            <p>Are you ready for a thrilling text adventure? Then look no further! Click the "Party" button above to
-                fill
-                out your party members, then "Story" to get started! Check your "Inventory" at any time as well by
-                clicking
-                that button.</p>
-        </div>
-        <div id="nav-content-party" class="hidden-content">
-            <h3>Party</h3>
-            <div class="form-group" data-children-count="1">
-                <label class="form-control-label" for="party-input-player">Your Name</label>
-                <input type="text" value="" class="form-control is-invalid" id="party-input-player">
-                <div id="party-input-feedback-player" class="invalid-feedback">Please enter a name.</div>
+    <head>
+        <!-- <h1 id="title">Ready for an exciting text adventure?</h1> -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">Text Adventure</a>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav mr-auto" id="navbar-ul"></ul>
             </div>
-            <button type="button" class="btn btn-success" id="party-save">Save</button>
-            <div id="party-all-valid" class="hidden-content">
-                <p>Looks like your party's all ready to go, <abbr title="player's name"></abbr>! Click on " Story" to
-                    get
-                    started on your adventure!</p>
+        </nav>
+    </head>
+
+    <body>
+        <div class="column-left spacer">.</div>
+        <div class="column-middle">
+            <div id="nav-content-home">
+                <h3>Home</h3>
+                <p>
+                    Are you ready for a thrilling text adventure? Then look no
+                    further! Click the "Party" button above to fill out your
+                    party members, then "Story" to get started! Check your
+                    "Inventory" at any time as well by clicking that button.
+                </p>
+            </div>
+            <div id="nav-content-party" class="hidden-content">
+                <h3>Party</h3>
+                <div class="form-group" id="party-form-group"></div>
+                <button type="button" class="btn btn-success" id="party-save">
+                    Save
+                </button>
+                <div id="party-all-valid" class="hidden-content">
+                    <p>
+                        Looks like your party's all ready to go,
+                        <abbr title="player's name"></abbr>! Click on "Story" to
+                        get started on your adventure!
+                    </p>
+                </div>
+            </div>
+            <div id="nav-content-inventory" class="hidden-content">
+                <h3>Inventory</h3>
+            </div>
+            <div id="nav-content-story" class="hidden-content">
+                <h3>Story</h3>
             </div>
         </div>
-        <div id="nav-content-inventory" class="hidden-content">
-            <h3>Inventory</h3>
-        </div>
-        <div id="nav-content-story" class="hidden-content">
-            <h3>Story</h3>
-        </div>
-    </div>
-    <div class="column-right spacer">.</div>
-</body>
+        <div class="column-right spacer">.</div>
+    </body>
 
-<script src="./index.js"></script>
-
+    <script src="./index.js"></script>
 </html>
