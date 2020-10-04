@@ -30,3 +30,17 @@ p {
 .hidden-content {
     display: none;
 }
+
+.btn-group-vertical {
+    width: 30%;
+    float: left;
+}
+
+.inventory-item-button {
+    width: 100%;
+}
+
+.inventory-display {
+    width: 70%;
+    float: left;
+}

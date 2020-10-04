@@ -1,5 +1,18 @@
-const capitalize = function (str) {
+const capitalizeWord = function (str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
+const capitalize = function (str) {
+    return str
+        .split(" ")
+        .map((s) => capitalizeWord(s))
+        .join(" ");
+};
+
+const clearChildren = function (elem) {
+    while (elem.hasChildNodes()) {
+        elem.childNodes[0].remove();
+    }
 };
 
 const navItemNames = ["home", "party", "inventory", "story"];
@@ -9,6 +22,7 @@ const navItems = {};
 const navContentSections = {};
 
 const navbarUl = document.getElementById("navbar-ul");
+clearChildren(navbarUl);
 
 navItemNames.forEach((nav) => {
     navItems[nav] = document.createElement("li");
