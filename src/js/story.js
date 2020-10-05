@@ -222,6 +222,19 @@ const story = {
         text: `"No, I thought we'd just sit here chatting and twiddling our thumbs forever, if that's alright with you... Of course we'd better start working on a way out of here; somebody's gotta save ${role(
             "love interest"
         )}!"`,
+        choices: [
+            {
+                text: "Wait... who?",
+                next: "stage_048_explainLoveInterest",
+            },
+        ],
+    },
+    stage_048_explainLoveInterest: {
+        text: `"Oh, right, you're new here.  ${role(
+            "love interest"
+        )} has been taken prisoner by ${role(
+            "arch rival"
+        )}, and it's our job to rescue them!  Well, my job anyways, but you seem like good people; I'll take you with me!`,
     },
 };
 let currentStage = {};
