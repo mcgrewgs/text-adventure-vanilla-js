@@ -168,6 +168,8 @@ const storyPromptBody = document.getElementById("story-prompt-body");
 const storyButtonGroup = document.getElementById("story-button-group");
 
 window.onpopstate = function () {
+    // eslint-disable-next-line no-undef
+    handleNavClick("story");
     setStoryStage(window.location.hash.substring(1));
 };
 
