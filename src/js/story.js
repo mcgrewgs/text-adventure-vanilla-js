@@ -165,11 +165,16 @@ const storyPromptHeader = document.getElementById("story-prompt-header");
 const storyPromptBody = document.getElementById("story-prompt-body");
 const storyButtonGroup = document.getElementById("story-button-group");
 
+window.onpopstate = function () {
+    setStoryStage(window.location.hash.substring(1));
+};
+
 // Good thing you grabbed that ____ earlier!
 // Too bad you don't have a ____...
 // Default outline-primary.  If requires an item you have, outline-success.  If uses up an item you have, outline-danger.  If requires or uses up an item you don't have, outline-secondary disabled.
 const setStoryStage = function (stage) {
     currentStage = story[stage];
+    window.location.hash = `${stage}`;
     if (currentStage.title) {
         storyPromptHeader.innerHTML = currentStage.title;
     }
@@ -181,6 +186,7 @@ const setStoryStage = function (stage) {
         currentStage.choices.forEach((choice, index) => {
             let button = document.createElement("button");
             button.setAttribute("type", "button");
+            button.setAttribute("href", `#${choice.next}`);
             button.classList.add("btn");
             let type = "outline-primary";
             let missingItems = [];

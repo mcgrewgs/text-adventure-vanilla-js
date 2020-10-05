@@ -35,7 +35,7 @@ navItemNames.forEach((nav) => {
 
     navButtons[nav] = document.createElement("a");
     navButtons[nav].id = `nav-button-${nav}`;
-    navButtons[nav].href = "#";
+    // navButtons[nav].href = "#";
     navButtons[nav].innerText = capitalize(nav);
     navButtons[nav].classList.add("nav-link");
 
