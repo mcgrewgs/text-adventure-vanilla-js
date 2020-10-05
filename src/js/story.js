@@ -1,3 +1,5 @@
+// not sure how I feel about keeping "uses up" in... seems kinda feels-bad-y
+
 // "Anything to declare before we let you in?"  Disclose to the guards that you have a sword.  "Good; no one should come into Riften unarmed."
 // My rattata is in the top percent of all rattata
 // I like shorts; they're comfy and easy to wear!
@@ -128,12 +130,12 @@ const story = {
             },
             {
                 text: "I do, but I'm saving it.",
-                usesUp: ["flask"],
+                requires: ["flask"],
                 next: "stage_038_savingIt",
             },
             {
                 text: "Sure do!  Help yourself.",
-                usesUp: ["flask"],
+                requires: ["flask"],
                 next: "stage_039_gaveADrink",
             },
         ],
