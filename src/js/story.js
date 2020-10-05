@@ -1,4 +1,7 @@
 // "Anything to declare before we let you in?"  Disclose to the guards that you have a sword.  "Good; no one should come into Riften unarmed."
+// My rattata is in the top percent of all rattata
+// I like shorts; they're comfy and easy to wear!
+// It's dangerous to go alone; take this!
 
 const role = function (roleName) {
     return `<abbr title="${roleName}'s name"></abbr>`;
@@ -44,7 +47,7 @@ const story = {
                 next: "stage_010_beginning",
             },
             {
-                text: `A flask.  It may help you deal with everything that's about to head your way, especially the crap ${role(
+                text: `A flask.  It may help you deal with everything that's about to come your way, especially the crap ${role(
                     "arch rival"
                 )} tends to fling.`,
                 requires: [],
@@ -52,7 +55,7 @@ const story = {
                 adds: [
                     {
                         name: "Flask",
-                        description: `A flask.  It may help you deal with everything that's about to head your way, especially the crap ${role(
+                        description: `A flask.  It may help you deal with everything that's about to come your way, especially the crap ${role(
                             "arch rival"
                         )} tends to fling.`,
                     },

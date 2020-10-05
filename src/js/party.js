@@ -5,6 +5,13 @@ const partyRoles = [
     "love interest",
     "arch rival",
 ];
+const partyRoleDefaults = {
+    player: "Gavin",
+    "male friend": "Marky Mark",
+    "female friend": "Serana",
+    "love interest": "Keira",
+    "arch rival": "Ganondorf",
+};
 const partyRoleValues = {};
 const partyInputs = {};
 const partyInputFeedbacks = {};
@@ -25,6 +32,7 @@ partyRoles.forEach((role) => {
     partyInputs[role].type = "text";
     partyInputs[role].classList.add("form-control");
     partyInputs[role].classList.add("is-invalid");
+    partyInputs[role].value = partyRoleDefaults[role];
     partyFormGroup.appendChild(partyInputs[role]);
 
     partyInputFeedbacks[role] = document.createElement("div");
