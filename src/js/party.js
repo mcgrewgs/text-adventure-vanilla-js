@@ -1,4 +1,10 @@
-const partyRoles = ["player"];
+const partyRoles = [
+    "player",
+    "male friend",
+    "female friend",
+    "love interest",
+    "arch rival",
+];
 const partyRoleValues = {};
 const partyInputs = {};
 const partyInputFeedbacks = {};

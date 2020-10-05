@@ -1,12 +1,12 @@
-// Good thing you grabbed that ____ earlier!
-// Too bad you don't have a ____...
-// You awaken to see you're sitting in a cart, hands bound, with a few others; a man across from you says "Hey, you; you're finally awake.  The name's <Friend (male)>."
-// Family heirloom - sword "Might get you out of a sticky situation.  Of course, it might get you into one, too."
-// "Anything to declare before we let you in?"  Disclose to the guards that you have a sword.  "Good; no one should come into Riften unarmed."
-
 const inventory = [];
 const inventoryButtonGroup = document.getElementById("inventory-button-group");
 const inventoryButtons = [];
+const inventoryDisplayCardHeader = document.getElementById(
+    "inventory-display-card-header"
+);
+const inventoryDisplayCardBody = document.getElementById(
+    "inventory-display-card-body"
+);
 
 const refreshInventory = function () {
     // clearChildren declared globally
@@ -17,14 +17,14 @@ const refreshInventory = function () {
         let button = document.createElement("button");
         button.classList.add("btn", "btn-secondary", "inventory-item-button");
         button.setAttribute("type", "button");
-        button.innerText = item.name;
+        button.innerHTML = item.name;
         button.addEventListener("click", () => {
-            handleClick(index);
+            handleInventoryClick(index);
         });
         inventoryButtonGroup.appendChild(button);
         inventoryButtons.push(button);
     });
-    handleClick(0);
+    handleInventoryClick(0);
 };
 
 const addItem = function (name, description = "") {
@@ -38,16 +38,48 @@ const addItem = function (name, description = "") {
     refreshInventory();
 };
 
-const handleClick = function (index) {
+// Used by story page
+// eslint-disable-next-line no-unused-vars
+const removeItem = function (name) {
+    for (let i = 0; i < inventory.length; i++) {
+        // equalsIgnoreCase is declared globally
+        // eslint-disable-next-line no-undef
+        if (equalsIgnoreCase(name, inventory[i].name)) {
+            inventory.splice(i, 1);
+            break;
+        }
+    }
+    refreshInventory();
+};
+
+// Used by story page
+// eslint-disable-next-line no-unused-vars
+const hasItem = function (name) {
+    for (let i = 0; i < inventory.length; i++) {
+        // equalsIgnoreCase is declared globally
+        // eslint-disable-next-line no-undef
+        if (equalsIgnoreCase(name, inventory[i].name)) {
+            return true;
+        }
+    }
+    return false;
+};
+
+const handleInventoryClick = function (index) {
     for (let i = 0; i < inventoryButtons.length; i++) {
         if (i == index) {
             inventoryButtons[i].classList.remove("btn-secondary");
             inventoryButtons[i].classList.add("btn-primary");
+            inventoryDisplayCardHeader.innerHTML = inventory[i].name;
+            inventoryDisplayCardBody.innerHTML = inventory[i].description;
         } else {
             inventoryButtons[i].classList.remove("btn-primary");
             inventoryButtons[i].classList.add("btn-secondary");
         }
     }
+    // we use this to replace role names in text.
+    // eslint-disable-next-line no-undef
+    handlePartySave();
 };
 
 addItem(

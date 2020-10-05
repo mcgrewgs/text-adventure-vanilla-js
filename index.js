@@ -9,6 +9,10 @@ const capitalize = function (str) {
         .join(" ");
 };
 
+const equalsIgnoreCase = function (str1, str2) {
+    return str1.trim().toLowerCase() === str2.trim().toLowerCase();
+};
+
 const clearChildren = function (elem) {
     while (elem.hasChildNodes()) {
         elem.childNodes[0].remove();
@@ -46,7 +50,7 @@ navItemNames.forEach((nav) => {
 
 const handleNavClick = function (clicked) {
     navItemNames.forEach((nav) => {
-        if (nav === clicked) {
+        if (equalsIgnoreCase(nav, clicked)) {
             navItems[nav].classList.add("active");
             navContentSections[nav].classList.remove("hidden-content");
         } else {

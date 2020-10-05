@@ -21,7 +21,7 @@
         <div class="column-left spacer">.</div>
         <div class="column-middle">
             <div id="nav-content-home">
-                <h2>Home</h2>
+                <h4>Home</h4>
                 <p>
                     Are you ready for a thrilling text adventure? Then look no
                     further! Click the "Party" button above to fill out your
@@ -30,11 +30,7 @@
                 </p>
             </div>
             <div id="nav-content-party" class="hidden-content">
-                <h2>Party</h2>
-                <div class="form-group" id="party-form-group"></div>
-                <button type="button" class="btn btn-success" id="party-save">
-                    Save
-                </button>
+                <h4>Party</h4>
                 <div id="party-all-valid" class="hidden-content">
                     <h5>
                         Looks like your party's all ready to go,
@@ -42,9 +38,13 @@
                         get started on your adventure!
                     </h5>
                 </div>
+                <div class="form-group" id="party-form-group"></div>
+                <button type="button" class="btn btn-success" id="party-save">
+                    Save
+                </button>
             </div>
             <div id="nav-content-inventory" class="hidden-content">
-                <h2>Inventory</h2>
+                <h4>Inventory</h4>
                 <div
                     class="btn-group-vertical"
                     id="inventory-button-group"
@@ -53,20 +53,30 @@
                     class="card border-primary mb-3 inventory-display"
                     id="inventory-display-card"
                 >
-                    <div class="card-header" id="inventory-display-card-header">
-                        Header
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Primary card title</h4>
-                        <p class="card-text">
-                            Some quick example text to build on the card title
-                            and make up the bulk of the card's content.
-                        </p>
-                    </div>
+                    <div
+                        class="card-header"
+                        id="inventory-display-card-header"
+                    ></div>
+                    <div
+                        class="card-body"
+                        id="inventory-display-card-body"
+                    ></div>
                 </div>
             </div>
             <div id="nav-content-story" class="hidden-content">
-                <h2>Story</h2>
+                <h4>Story</h4>
+                <div
+                    class="card border-primary mb-3 story-prompt"
+                    id="story-prompt-card"
+                >
+                    <div class="card-header" id="story-prompt-header"></div>
+                    <div class="card-body" id="story-prompt-body"></div>
+                </div>
+                <div
+                    class="btn-group mr-2 story-button-group"
+                    role="group"
+                    id="story-button-group"
+                ></div>
             </div>
         </div>
         <div class="column-right spacer">.</div>
@@ -75,4 +85,5 @@
     <script src="./index.js"></script>
     <script src="./src/js/party.js"></script>
     <script src="./src/js/inventory.js"></script>
+    <script src="./src/js/story.js"></script>
 </html>

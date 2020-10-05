@@ -32,15 +32,25 @@ p {
 }
 
 .btn-group-vertical {
-    width: 30%;
+    width: 20%;
     float: left;
 }
 
-.inventory-item-button {
+/* .inventory-item-button {
     width: 100%;
-}
+} */
 
 .inventory-display {
-    width: 70%;
+    width: 80%;
+    height: 60%;
     float: left;
+}
+
+.story-prompt {
+    width: 100%;
+    height: 40%;
+}
+
+.story-button-group {
+    width: 100%;
 }
