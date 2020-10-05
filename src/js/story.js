@@ -18,8 +18,6 @@ const story = {
                 text: `A sword.  It might get you out of a sticky situation; of course, it might get you into one, too.  Also perfect for threatening ${role(
                     "arch rival"
                 )}.`,
-                requires: [],
-                usesUp: [],
                 adds: [
                     {
                         name: "Sword",
@@ -34,8 +32,6 @@ const story = {
                 text: `A holy symbol.  It might get you help from the church, if you encounter dire straits.  Also useful for fending off vampires like ${role(
                     "arch rival"
                 )}.`,
-                requires: [],
-                usesUp: [],
                 adds: [
                     {
                         name: "Holy Symbol",
@@ -50,8 +46,6 @@ const story = {
                 text: `A flask.  It may help you deal with everything that's about to come your way, especially the crap ${role(
                     "arch rival"
                 )} tends to fling.`,
-                requires: [],
-                usesUp: [],
                 adds: [
                     {
                         name: "Flask",
@@ -72,8 +66,6 @@ const story = {
         choices: [
             {
                 text: "Let's do this!",
-                requires: [],
-                usesUp: [],
                 adds: [
                     {
                         name: "Leeroy Jenkins",
@@ -112,14 +104,12 @@ const story = {
         ],
     },
     stage_022_who: {
-        title: "Awakening",
         text: `${role(
             "male friend"
         )} gives you a blank look.  "Who?  Never heard of her.  Well, anyways."`,
         choices: [],
     },
     stage_024_niceToMeetYou: {
-        title: "Awakening",
         text: `"${role(
             "player"
         )}, eh?  Cool, that'll be easy to remember; my father's brother's nephew's cousin's former roommate is called ${role(
@@ -128,8 +118,44 @@ const story = {
         choices: [],
     },
     stage_026_needADrink: {
-        title: "Awakening",
-        text: `"Me too, man; say, you wouldn't happen to have a flask squirreled away somewhere, would you?"`,
+        text: `"Me too, man; say, you wouldn't happen to have a flask squirreled away somewhere, would you?  I've had ${role(
+            "arch rival"
+        )} on my mind lately and could really use a distraction."`,
+        choices: [
+            {
+                text: "(Lie) Sadly, no; I wish I did.",
+                next: "stage_037_dontHaveADrink",
+            },
+            {
+                text: "I do, but I'm saving it.",
+                usesUp: ["flask"],
+                next: "stage_038_savingIt",
+            },
+            {
+                text: "Sure do!  Help yourself.",
+                usesUp: ["flask"],
+                next: "stage_039_gaveADrink",
+            },
+        ],
+    },
+    stage_037_dontHaveADrink: {
+        text: `"That's too bad..." ${role(
+            "male friend"
+        )}'s face saddens for a moment before he perks back up.  "Oh well.  Guess we'd better start working on a way out of here; somebody's gotta save ${role(
+            "love interest"
+        )}."`,
+        choices: [],
+    },
+    stage_038_savingIt: {
+        text: `"For today, I guarantee it.  They're carting us off to be executed; no point saving it any longer."  ${role(
+            "male friend"
+        )}'s face saddens for a moment before he perks back up and retrieves your flask.  "Oh well, nothing else to be done about it now, right?  Cheers!"`,
+        choices: [],
+    },
+    stage_039_gaveADrink: {
+        text: `${role(
+            "male friend"
+        )}'s face lights up and he retrieves your flask.  "Cheers!"  He takes a sip, then aggressively wipes his lips.  "Ahh, that's the good stuff."  He then offers you a sip.`,
         choices: [],
     },
 };
@@ -144,7 +170,9 @@ const storyButtonGroup = document.getElementById("story-button-group");
 // Default outline-primary.  If requires an item you have, outline-success.  If uses up an item you have, outline-danger.  If requires or uses up an item you don't have, outline-secondary disabled.
 const setStoryStage = function (stage) {
     currentStage = story[stage];
-    storyPromptHeader.innerHTML = currentStage.title;
+    if (currentStage.title) {
+        storyPromptHeader.innerHTML = currentStage.title;
+    }
     storyPromptBody.innerHTML = currentStage.text;
     // declared globally
     // eslint-disable-next-line no-undef
