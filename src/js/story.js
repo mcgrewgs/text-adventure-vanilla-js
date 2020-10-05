@@ -93,6 +93,43 @@ const story = {
         text: `You awaken to see you're sitting in a cart, hands bound, with a few others; a man across from you says "Hey, you; you're finally awake.  The name's ${role(
             "male friend"
         )}."`,
+        choices: [
+            {
+                text: `Where is ${role(
+                    "female friend"
+                )}?  Is she safe?  Is she alright?`,
+                next: "stage_022_who",
+            },
+            {
+                text: `Call me ${role("player")}.`,
+                next: "stage_024_niceToMeetYou",
+            },
+            {
+                text: "I need a drink.",
+                requires: ["flask"],
+                next: "stage_026_needADrink",
+            },
+        ],
+    },
+    stage_022_who: {
+        title: "Awakening",
+        text: `${role(
+            "male friend"
+        )} gives you a blank look.  "Who?  Never heard of her.  Well, anyways."`,
+        choices: [],
+    },
+    stage_024_niceToMeetYou: {
+        title: "Awakening",
+        text: `"${role(
+            "player"
+        )}, eh?  Cool, that'll be easy to remember; my father's brother's nephew's cousin's former roommate is called ${role(
+            "player"
+        )}, too."`,
+        choices: [],
+    },
+    stage_026_needADrink: {
+        title: "Awakening",
+        text: `"Me too, man; say, you wouldn't happen to have a flask squirreled away somewhere, would you?"`,
         choices: [],
     },
 };
@@ -112,66 +149,72 @@ const setStoryStage = function (stage) {
     // declared globally
     // eslint-disable-next-line no-undef
     clearChildren(storyButtonGroup);
-    currentStage.choices.forEach((choice, index) => {
-        let button = document.createElement("button");
-        button.setAttribute("type", "button");
-        button.classList.add("btn");
-        let type = "outline-primary";
-        let missingItems = [];
-        let requiresSome = false;
-        let usesUpSome = false;
-        if (choice.requires.length > 0) {
-            requiresSome = true;
-            choice.requires.forEach((req) => {
-                // hasItem defined globally
-                // eslint-disable-next-line no-undef
-                if (!hasItem(req)) {
-                    missingItems.push(req);
-                }
-            });
-        }
-        if (choice.usesUp.length > 0) {
-            usesUpSome = true;
-            choice.usesUp.forEach((use) => {
-                // hasItem defined globally
-                // eslint-disable-next-line no-undef
-                if (!hasItem(use)) {
-                    missingItems.push(use);
-                }
-            });
-        }
-        if (missingItems.length > 0) {
-            type = "outline-secondary";
-            button.classList.add("disabled");
-        } else if (requiresSome) {
-            type = "outline-success";
-        } else if (usesUpSome) {
-            type = "outline-danger";
-        }
-        button.classList.add(`btn-${type}`);
+    if (currentStage.choices) {
+        currentStage.choices.forEach((choice, index) => {
+            let button = document.createElement("button");
+            button.setAttribute("type", "button");
+            button.classList.add("btn");
+            let type = "outline-primary";
+            let missingItems = [];
+            let requiresSome = false;
+            let usesUpSome = false;
+            if (choice.requires && choice.requires.length > 0) {
+                requiresSome = true;
+                choice.requires.forEach((req) => {
+                    // hasItem defined globally
+                    // eslint-disable-next-line no-undef
+                    if (!hasItem(req)) {
+                        missingItems.push(req);
+                    }
+                });
+            }
+            if (choice.usesUp && choice.usesUp.length > 0) {
+                usesUpSome = true;
+                choice.usesUp.forEach((use) => {
+                    // hasItem defined globally
+                    // eslint-disable-next-line no-undef
+                    if (!hasItem(use)) {
+                        missingItems.push(use);
+                    }
+                });
+            }
+            if (missingItems.length > 0) {
+                type = "outline-secondary";
+                button.classList.add("disabled");
+            } else if (requiresSome) {
+                type = "outline-success";
+            } else if (usesUpSome) {
+                type = "outline-danger";
+            }
+            button.classList.add(`btn-${type}`);
 
-        button.innerHTML = choice.text;
-        if (missingItems.length === 0) {
-            button.addEventListener("click", () => {
-                handleStoryClick(index);
-            });
-        }
-        storyButtonGroup.appendChild(button);
-    });
+            button.innerHTML = choice.text;
+            if (missingItems.length === 0) {
+                button.addEventListener("click", () => {
+                    handleStoryClick(index);
+                });
+            }
+            storyButtonGroup.appendChild(button);
+        });
+    }
     // we use this to replace role names in text.
     // eslint-disable-next-line no-undef
     handlePartySave();
 };
 
 const handleStoryClick = function (index) {
-    currentStage.choices[index].usesUp.forEach((use) => {
-        // eslint-disable-next-line no-undef
-        removeItem(use);
-    });
-    currentStage.choices[index].adds.forEach((add) => {
-        // eslint-disable-next-line no-undef
-        addItem(add.name, add.description);
-    });
+    if (currentStage.choices[index].usesUp) {
+        currentStage.choices[index].usesUp.forEach((use) => {
+            // eslint-disable-next-line no-undef
+            removeItem(use);
+        });
+    }
+    if (currentStage.choices[index].adds) {
+        currentStage.choices[index].adds.forEach((add) => {
+            // eslint-disable-next-line no-undef
+            addItem(add.name, add.description);
+        });
+    }
     setStoryStage(currentStage.choices[index].next);
 };
 
