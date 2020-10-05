@@ -234,7 +234,7 @@ const story = {
             "love interest"
         )} has been taken prisoner by ${role(
             "arch rival"
-        )}, and it's our job to rescue them!  Well, my job anyways, but you seem like good people; I'll take you with me!`,
+        )}, and it's our job to rescue them!  Well, my job anyways, but you seem like good people; I'll take you with me!"`,
     },
 };
 let currentStage = {};
