@@ -1,22 +1,22 @@
 {
-  "name": "text-adventure-vanilla",
-  "version": "1.0.0",
-  "description": "text adventure in vanillas JS",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mcgrewgs/text-adventure-vanilla-js.git"
-  },
-  "author": "mcgrewgs",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mcgrewgs/text-adventure-vanilla-js/issues"
-  },
-  "homepage": "https://github.com/mcgrewgs/text-adventure-vanilla-js#readme",
-  "devDependencies": {
-    "eslint": "~7.9.0"
-  }
+    "name": "text-adventure-vanilla",
+    "version": "1.0.0",
+    "description": "text adventure in vanillas JS",
+    "main": "index.js",
+    "scripts": {
+        "fix": "eslint --fix ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mcgrewgs/text-adventure-vanilla-js.git"
+    },
+    "author": "mcgrewgs",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mcgrewgs/text-adventure-vanilla-js/issues"
+    },
+    "homepage": "https://github.com/mcgrewgs/text-adventure-vanilla-js#readme",
+    "devDependencies": {
+        "eslint": "~7.9.0"
+    }
 }
