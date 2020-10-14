@@ -300,9 +300,15 @@ const setStoryStage = function (stage) {
                     }
                 });
             }
+            button.innerHTML = choice.text;
             if (missingItems.length > 0) {
                 type = "outline-secondary";
                 button.classList.add("disabled");
+                button.innerHTML = `${
+                    button.innerHTML
+                }  If only you'd grabbed that <b>${missingItems.join(
+                    "</b> and that <b>"
+                )}</b> earlier...`;
             } else if (requiresSome) {
                 type = "outline-success";
             } else if (usesUpSome) {
@@ -310,7 +316,6 @@ const setStoryStage = function (stage) {
             }
             button.classList.add(`btn-${type}`);
 
-            button.innerHTML = choice.text;
             if (missingItems.length === 0) {
                 button.addEventListener("click", () => {
                     handleStoryClick(index);
